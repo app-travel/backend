@@ -1,4 +1,4 @@
 package app.travel.model.tours_gallery;
 
-public class TourGallery {
+public class TourGalleryEntity {
 }

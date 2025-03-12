@@ -1,4 +1,4 @@
 package app.travel.model.tour_packs;
 
-public class TourPack {
+public class TourPackEntity {
 }

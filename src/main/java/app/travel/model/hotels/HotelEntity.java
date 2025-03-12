@@ -1,4 +1,4 @@
 package app.travel.model.hotels;
 
-public class Hotel {
+public class HotelEntity {
 }

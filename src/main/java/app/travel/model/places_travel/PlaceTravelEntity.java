@@ -1,4 +1,4 @@
 package app.travel.model.places_travel;
 
-public class PlaceTravel {
+public class PlaceTravelEntity {
 }

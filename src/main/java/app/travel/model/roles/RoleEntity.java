@@ -1,4 +1,4 @@
 package app.travel.model.roles;
 
-public class Role {
+public class RoleEntity {
 }

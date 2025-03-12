@@ -1,4 +1,4 @@
 package app.travel.model.schedules_tour;
 
-public class ScheduleTour {
+public class ScheduleTourEntity {
 }
