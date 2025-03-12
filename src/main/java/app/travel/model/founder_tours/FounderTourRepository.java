@@ -1,4 +1,4 @@
 package app.travel.model.founder_tours;
 
-public class FounderTourRepository {
+public interface FounderTourRepository {
 }

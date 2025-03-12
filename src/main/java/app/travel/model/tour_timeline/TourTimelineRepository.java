@@ -1,4 +1,4 @@
-package app.travel.model.tours_timeline;
+package app.travel.model.tour_timeline;
 
 public interface TourTimelineRepository {
 }

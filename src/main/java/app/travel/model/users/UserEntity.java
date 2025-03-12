@@ -1,25 +1,20 @@
 package app.travel.model.users;
 
+import app.travel.shared.dto.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.UUID;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserEntity {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.UUID)
-    UUID id;
+public class UserEntity extends AuditableEntity {
 
     @Column(name = "username")
     String username;
@@ -29,7 +24,5 @@ public class UserEntity {
 
     @Column(name = "enabled")
     Boolean enabled;
-
-
 
 }

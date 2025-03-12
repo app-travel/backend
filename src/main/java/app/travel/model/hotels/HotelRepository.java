@@ -1,4 +1,4 @@
 package app.travel.model.hotels;
 
-public class HotelRepository {
+public interface HotelRepository {
 }
