@@ -30,15 +30,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-	// https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa
-	implementation 'com.querydsl:querydsl-jpa:5.1.0'
-	// https://mvnrepository.com/artifact/com.querydsl/querydsl-apt
-	implementation 'com.querydsl:querydsl-apt:5.1.0'
 	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
 	implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
 	// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations
 	implementation 'io.swagger.core.v3:swagger-annotations:2.2.28'
 	// https://mvnrepository.com/artifact/com.auth0/java-jwt
+	// https://mvnrepository.com/artifact/org.jooq/jooq
+	implementation 'org.jooq:jooq:3.20.1'
+	// https://mvnrepository.com/artifact/org.jooq/jooq-codegen
+	implementation 'org.jooq:jooq-codegen:3.20.1'
+	// https://mvnrepository.com/artifact/org.jooq/jooq-meta
+	implementation 'org.jooq:jooq-meta:3.20.1'
 	implementation 'com.auth0:java-jwt:4.5.0'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
