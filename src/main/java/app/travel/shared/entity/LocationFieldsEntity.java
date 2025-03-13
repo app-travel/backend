@@ -1,4 +1,4 @@
-package app.travel.shared.dto;
+package app.travel.shared.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,6 +23,9 @@ public class LocationFieldsEntity {
 
     @Column(name = "code")
     String code;
+
+    @Column(name = "name")
+    String name;
 
     @Column(name = "name_en")
     String nameEn;

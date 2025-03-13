@@ -1,6 +1,6 @@
 package app.travel.model.users;
 
-import app.travel.shared.dto.AuditableEntity;
+import app.travel.shared.entity.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;

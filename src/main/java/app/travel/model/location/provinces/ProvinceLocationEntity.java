@@ -1,6 +1,6 @@
 package app.travel.model.location.provinces;
 
-import app.travel.shared.dto.LocationFieldsEntity;
+import app.travel.shared.entity.LocationFieldsEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;

@@ -1,6 +1,6 @@
 package app.travel.model.location.districts;
 
-import app.travel.shared.dto.LocationFieldsEntity;
+import app.travel.shared.entity.LocationFieldsEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;

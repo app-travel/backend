@@ -1,6 +1,6 @@
 package app.travel.model.places_travel;
 
-import app.travel.shared.dto.AuditableEntity;
+import app.travel.shared.entity.AuditableEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;

@@ -1,6 +1,6 @@
 package app.travel.model.schedules_tour;
 
-import app.travel.shared.dto.AuditableEntity;
+import app.travel.shared.entity.AuditableEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

@@ -1,4 +1,4 @@
-package app.travel.shared.dto;
+package app.travel.shared.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
