@@ -1,4 +1,4 @@
 package app.travel.model.packs_of_tour;
 
-public class PackOfTourRepository {
+public interface PackOfTourRepository {
 }

@@ -3,6 +3,7 @@ package app.travel.model.founder_tours;
 import app.travel.shared.dto.AuditableEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -20,8 +21,11 @@ import java.util.UUID;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FounderTourEntity extends AuditableEntity {
 
-    @Column(name = "user_id")
+    @JoinColumn(name = "user_id")
     UUID userId;
+
+    @JoinColumn(name = "ward_location_id")
+    UUID wardLocationId;
 
     @Column(name = "company_name")
     String companyName;
@@ -35,10 +39,10 @@ public class FounderTourEntity extends AuditableEntity {
     @Column(name = "phone_number")
     String phoneNumber;
 
-    @Column(name = "ward_location_id")
-    UUID wardLocationId;
-
     @Column(name = "enterprise_code")
     String enterpriseCode;
+
+    @Column(name = "address_location")
+    String addressLocation;
 
 }

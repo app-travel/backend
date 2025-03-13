@@ -6,6 +6,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -15,6 +17,9 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserEntity extends AuditableEntity {
+
+    @JoinColumn(name = "role_id")
+    UUID roleId;
 
     @Column(name = "username")
     String username;

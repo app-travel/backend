@@ -1,16 +1,13 @@
-package app.travel.model.location.wards;
+package app.travel.model.location.provinces;
 
 import app.travel.shared.dto.LocationFieldsEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
-import java.util.UUID;
-
-@Table(name = "wards")
+@Table(name = "provinces")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,9 +15,5 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class WardLocationEntity extends LocationFieldsEntity {
-
-    @JoinColumn(name = "district_id")
-    UUID districtId;
-
+public class ProvinceLocationEntity extends LocationFieldsEntity {
 }
