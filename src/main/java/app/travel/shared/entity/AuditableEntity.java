@@ -30,6 +30,7 @@ public class AuditableEntity {
 
     @PrePersist
     public void prePersist() {
+        id = UUID.randomUUID();
         createdAt = OffsetDateTime.now(ZoneId.systemDefault());
         updatedAt = OffsetDateTime.now(ZoneId.systemDefault());
     }

@@ -18,11 +18,7 @@ public class LocationFieldsEntity {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.UUID)
-    UUID id;
-
-    @Column(name = "code")
-    String code;
+    String id;
 
     @Column(name = "name")
     String name;
