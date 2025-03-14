@@ -1,4 +1,5 @@
 package app.travel.model.users;
 
-public class UserJooqQuery {
+
+public interface UserMapper {
 }

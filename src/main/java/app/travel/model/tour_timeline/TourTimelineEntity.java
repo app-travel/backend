@@ -29,7 +29,7 @@ public class TourTimelineEntity extends AuditableEntity {
     String tourName;
 
     @Column(name = "tour_day")
-    OffsetDateTime tourDay;
+    Integer tourDay;
 
     @Column(name = "image_url")
     String imageUrl;

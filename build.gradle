@@ -34,25 +34,23 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
 	// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations
 	implementation 'io.swagger.core.v3:swagger-annotations:2.2.28'
-	// https://mvnrepository.com/artifact/org.jooq/jooq
-	implementation 'org.jooq:jooq:3.20.1'
-	// https://mvnrepository.com/artifact/org.jooq/jooq-codegen
-	implementation 'org.jooq:jooq-codegen:3.20.1'
-	// https://mvnrepository.com/artifact/org.jooq/jooq-meta
-	implementation 'org.jooq:jooq-meta:3.20.1'
+	// https://mvnrepository.com/artifact/org.mybatis/mybatis
+	implementation 'org.mybatis:mybatis:3.5.19'
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
 	implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
-	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson
-	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
-	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
-	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
 	// https://mvnrepository.com/artifact/org.mapstruct/mapstruct
 	implementation 'org.mapstruct:mapstruct:1.6.3'
 	// https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor
 	implementation 'org.mapstruct:mapstruct-processor:1.6.3'
+	// https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+	implementation 'org.flywaydb:flyway-core:11.4.0'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
