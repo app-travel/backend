@@ -23,7 +23,7 @@ public class PackOfTourEntity extends AuditableEntity {
     @JoinColumn(name = "tour_id")
     UUID tourId;
 
-    @JoinColumn(name = "pack_id")
-    UUID packId;
+    @JoinColumn(name = "tour_pack_id")
+    UUID tourPackId;
 
 }

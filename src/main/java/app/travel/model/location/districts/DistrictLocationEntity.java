@@ -8,9 +8,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
-import java.util.UUID;
-
-@Table(name = "districts")
+@Table(name = "districts_location")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +18,7 @@ import java.util.UUID;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DistrictLocationEntity extends LocationFieldsEntity {
 
-    @JoinColumn(name = "province_id")
-    UUID provinceId;
+    @JoinColumn(name = "province_location_id")
+    String provinceLocationId;
 
 }

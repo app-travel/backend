@@ -27,7 +27,7 @@ public class UserEntity extends AuditableEntity {
     @Column(name = "password")
     String password;
 
-    @Column(name = "enabled")
-    Boolean enabled;
+    @Column(name = "is_enabled")
+    Boolean isEnabled;
 
 }

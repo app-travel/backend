@@ -1,4 +1,4 @@
-package app.travel.model.places_travel;
+package app.travel.model.place_travels;
 
 import app.travel.shared.entity.AuditableEntity;
 import jakarta.persistence.Entity;
@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.UUID;
 
-@Table(name = "places_travel")
+@Table(name = "place_travels")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor

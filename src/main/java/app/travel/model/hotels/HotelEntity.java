@@ -8,6 +8,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
+import java.math.BigDecimal;
+
 @Table(name = "hotels")
 @Entity
 @NoArgsConstructor
@@ -18,10 +20,10 @@ import lombok.experimental.SuperBuilder;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class HotelEntity extends AuditableEntity {
 
-    @Column(name = "name")
-    String name;
+    @Column(name = "hotel_name")
+    String hotel_name;
 
     @Column(name = "money")
-    String money;
+    BigDecimal money;
 
 }

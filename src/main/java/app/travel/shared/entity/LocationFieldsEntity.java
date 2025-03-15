@@ -5,8 +5,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
-import java.util.UUID;
-
 @MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor

@@ -1,4 +1,4 @@
-package app.travel.model.booking_tours;
+package app.travel.model.bookings_tour;
 
 public interface BookingTourRepository {
 }

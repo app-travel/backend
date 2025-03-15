@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 import java.util.UUID;
 
-@Table(name = "wards")
+@Table(name = "wards_location")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +19,7 @@ import java.util.UUID;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class WardLocationEntity extends LocationFieldsEntity {
 
-    @JoinColumn(name = "district_id")
-    UUID districtId;
+    @JoinColumn(name = "district_location_id")
+    String districtLocationId;
 
 }

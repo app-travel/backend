@@ -1,4 +1,4 @@
-package app.travel.model.tags_tour;
+package app.travel.model.tag_tours;
 
 public interface TagTourRepository {
 }

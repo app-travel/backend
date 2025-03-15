@@ -7,7 +7,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
-@Table(name = "provinces")
+@Table(name = "provinces_location")
 @Entity
 @AllArgsConstructor
 @Getter

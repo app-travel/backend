@@ -8,7 +8,6 @@ import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
-
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -28,9 +27,6 @@ public class ScheduleTourEntity extends AuditableEntity {
 
     @JoinColumn(name = "hotel_id")
     UUID hotelId;
-
-    @JoinColumn(name = "created_by")
-    UUID createdBy;
 
     @Column(name = "start_date")
     OffsetDateTime startDate;

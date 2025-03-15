@@ -25,16 +25,13 @@ public class FounderTourEntity extends AuditableEntity {
     UUID userId;
 
     @JoinColumn(name = "ward_location_id")
-    UUID wardLocationId;
+    String wardLocationId;
 
     @Column(name = "company_name")
     String companyName;
 
     @Column(name = "email")
     String email;
-
-    @Column(name = "address")
-    String address;
 
     @Column(name = "phone_number")
     String phoneNumber;

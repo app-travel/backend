@@ -1,4 +1,4 @@
-package app.travel.model.tags_tour;
+package app.travel.model.tag_tours;
 
 import app.travel.shared.entity.AuditableEntity;
 import jakarta.persistence.Column;
@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.UUID;
 
-@Table(name = "tag_tour")
+@Table(name = "tag_tours")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,9 +20,6 @@ import java.util.UUID;
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TagTourEntity extends AuditableEntity {
-
-    @JoinColumn(name = "tour_id")
-    UUID tourId;
 
     @Column(name = "tag_name")
     String tagName;

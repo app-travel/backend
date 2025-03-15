@@ -18,8 +18,8 @@ import lombok.experimental.SuperBuilder;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PlaceEntity extends AuditableEntity {
 
-    @Column(name = "place")
-    String place;
+    @Column(name = "place_name")
+    String placeName;
 
     @Column(name = "is_foreign")
     Boolean isForeign;
