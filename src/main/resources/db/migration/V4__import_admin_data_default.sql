@@ -9,7 +9,7 @@ DECLARE
     _version integer;
     _record record;
     _username varchar := 'admin@travel.app';
-    _password varchar := '$2a$12$4jpB1QXq2ICnBEhWGii4ve02uUe5zgvSXUdbGCMEuKgPE1iwtLRjS';
+    _password varchar := 'admin123@travel.app';
     _enabled boolean := 1 = 1;
 BEGIN
 
@@ -35,6 +35,8 @@ BEGIN
     if _record is null then
         call import_roles_data_default();
     end if;
+
+    _password := crypt(_password, gen_salt('bf', 12));
 
     insert into users(id, username, password, is_enabled, created_at, updated_at, role_id)
     values (gen_random_uuid(), _username, _password, _enabled, now(), now(), _record.id);
