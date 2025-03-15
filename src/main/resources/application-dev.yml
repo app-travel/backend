@@ -15,3 +15,5 @@ spring:
     user: postgres
     password: 123123
     enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0

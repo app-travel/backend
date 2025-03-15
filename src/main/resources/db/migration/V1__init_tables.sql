@@ -1,4 +1,5 @@
-create table provinces_location(
+
+create table if not exists provinces_location(
     id varchar(255) primary key not null,
     name varchar(255),
     name_en varchar(255),
@@ -7,7 +8,7 @@ create table provinces_location(
     code_name varchar(255)
 );
 
-create table districts_location(
+create table if not exists districts_location(
     id varchar(255) primary key not null,
     name varchar(255),
     name_en varchar(255),
@@ -18,7 +19,7 @@ create table districts_location(
     constraint fk_province_location_id__districts_location foreign key(province_location_id) references provinces_location(id)
 );
 
-create table wards_location(
+create table if not exists wards_location(
     id varchar(255) primary key not null,
     name varchar(255),
     name_en varchar(255),
