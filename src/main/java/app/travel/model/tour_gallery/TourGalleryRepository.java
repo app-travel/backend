@@ -1,4 +1,4 @@
-package app.travel.model.tour_galleries;
+package app.travel.model.tour_gallery;
 
 public interface TourGalleryRepository {
 }

@@ -1,4 +1,4 @@
-package app.travel.model.feedback_galleries;
+package app.travel.model.feedback_gallery;
 
 public interface FeedbackGalleryRepository {
 }

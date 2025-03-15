@@ -29,6 +29,9 @@ public class BookingTourEntity extends AuditableEntity {
     @JoinColumn(name = "user_id")
     UUID userId;
 
+    @Column(name = "tickets_number")
+    Integer ticketsNumber;
+
     @Column(name = "money_tour")
     BigDecimal moneyTour;
 

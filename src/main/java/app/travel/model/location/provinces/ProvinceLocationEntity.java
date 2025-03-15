@@ -9,7 +9,6 @@ import lombok.experimental.SuperBuilder;
 
 @Table(name = "provinces")
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter

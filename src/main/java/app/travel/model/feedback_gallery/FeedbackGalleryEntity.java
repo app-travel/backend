@@ -1,4 +1,4 @@
-package app.travel.model.tour_galleries;
+package app.travel.model.feedback_gallery;
 
 import app.travel.shared.entity.AuditableEntity;
 import jakarta.persistence.Column;
@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.UUID;
 
-@Table(name = "tour_gallery")
+@Table(name = "feedback_gallery")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +19,10 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TourGalleryEntity extends AuditableEntity {
+public class FeedbackGalleryEntity extends AuditableEntity {
 
-    @JoinColumn(name = "tour_id")
-    UUID tourId;
+    @JoinColumn(name = "feedback_id")
+    UUID feedbackId;
 
     @Column(name = "image_url")
     String imageUrl;

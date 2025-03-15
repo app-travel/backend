@@ -1,10 +1,7 @@
 package app.travel.model.tours;
 
 import app.travel.shared.entity.AuditableEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
@@ -49,5 +46,14 @@ public class TourEntity extends AuditableEntity {
 
     @Column(name = "tour_video_url")
     String tourVideoUrl;
+
+    @Column(name = "booking_tickets")
+    Integer bookingTickets;
+
+    @Override
+    public void prePersist() {
+        super.prePersist();
+        bookingTickets = 0;
+    }
 
 }
