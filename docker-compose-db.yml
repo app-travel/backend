@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123123
-      POSTGRES_DB: travel_world
+      POSTGRES_DB: travel-world
     volumes:
       - pg_data:/var/lib/postgresql/data
 

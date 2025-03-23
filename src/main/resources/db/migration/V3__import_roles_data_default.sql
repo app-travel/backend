@@ -5,9 +5,10 @@ CREATE OR REPLACE PROCEDURE insert_into_roles(
 AS $$
 DECLARE
     --
+    _timestamp_now timestamp := now();
 BEGIN
     insert into roles(id, created_at, updated_at, role_name)
-    values (gen_random_uuid(), now(), now(), _role_name);
+    values (gen_random_uuid(), _timestamp_now, _timestamp_now, _role_name);
 END;
 $$;
 

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: tour
+    name: travel
 
   profiles:
     active: dev

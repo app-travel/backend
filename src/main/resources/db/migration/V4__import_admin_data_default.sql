@@ -11,6 +11,7 @@ DECLARE
     _username varchar := 'admin@travel.app';
     _password varchar := 'admin123@travel.app';
     _enabled boolean := 1 = 1;
+    _timestamp_now timestamp := now();
 BEGIN
 
     select split_part(version(), ' ', 2)::FLOAT::INTEGER INTO _version;
@@ -39,7 +40,7 @@ BEGIN
     _password := crypt(_password, gen_salt('bf', 12));
 
     insert into users(id, username, password, is_enabled, created_at, updated_at, role_id)
-    values (gen_random_uuid(), _username, _password, _enabled, now(), now(), _record.id);
+    values (gen_random_uuid(), _username, _password, _enabled, _timestamp_now, _timestamp_now, _record.id);
 
 END;
 $$;

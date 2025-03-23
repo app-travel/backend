@@ -1,0 +1,1 @@
+alter table schedules_tour rename to schedules_booking_tour;

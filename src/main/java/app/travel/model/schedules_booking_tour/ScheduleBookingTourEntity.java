@@ -1,4 +1,4 @@
-package app.travel.model.schedules_tour;
+package app.travel.model.schedules_booking_tour;
 
 import app.travel.shared.entity.AuditableEntity;
 import jakarta.persistence.Column;
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-@Table(name = "schedules_tour")
+@Table(name = "schedules_booking_tour")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +20,7 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ScheduleTourEntity extends AuditableEntity {
+public class ScheduleBookingTourEntity extends AuditableEntity {
 
     @JoinColumn(name = "tour_id")
     UUID tourId;
