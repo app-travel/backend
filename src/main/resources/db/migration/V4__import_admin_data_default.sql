@@ -1,4 +1,4 @@
---- password real is 'admin123@travel.app'
+--- real password is 'admin123@travel.app'
 
 -------------------------------------------------
 
