@@ -19,7 +19,6 @@ public class AuditableEntity {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.UUID)
     UUID id;
 
     @Column(name = "created_at")
