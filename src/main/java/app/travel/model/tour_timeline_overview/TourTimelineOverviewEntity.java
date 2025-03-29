@@ -1,6 +1,6 @@
 package app.travel.model.tour_timeline_overview;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -19,7 +19,7 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TourTimelineOverviewEntity extends AuditableEntity {
+public class TourTimelineOverviewEntity extends AuditEntity {
 
     @JoinColumn(name = "tour_timeline_id")
     UUID tourTimelineId;

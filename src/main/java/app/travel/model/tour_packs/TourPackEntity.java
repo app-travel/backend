@@ -1,6 +1,6 @@
 package app.travel.model.tour_packs;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -16,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TourPackEntity extends AuditableEntity {
+public class TourPackEntity extends AuditEntity {
 
     @Column(name = "pack_name")
     String packName;

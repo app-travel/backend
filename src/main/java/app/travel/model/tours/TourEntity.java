@@ -1,6 +1,6 @@
 package app.travel.model.tours;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -15,7 +15,7 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TourEntity extends AuditableEntity {
+public class TourEntity extends AuditEntity {
 
     @JoinColumn(name = "founder_tour_id")
     UUID founderTourId;

@@ -39,9 +39,9 @@ create table if not exists roles(
 
 create table if not exists users(
     id uuid primary key,
-    username varchar(255),
-    password varchar(255),
-    is_enabled boolean,
+    username varchar(255) not null unique ,
+    password varchar(255) not null,
+    is_enabled boolean default true,
     created_at timestamp with time zone,
     updated_at timestamp with time zone,
     role_id uuid not null,

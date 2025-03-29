@@ -8,7 +8,7 @@ AS $$
 DECLARE
     _version integer;
     _record record;
-    _username varchar := 'admin@travel.app';
+    _username varchar := 'admin_travel';
     _password varchar := 'admin123@travel.app';
     _enabled boolean := 1 = 1;
     _timestamp_now timestamp := now();

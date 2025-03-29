@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AuditableEntity {
+public class AuditEntity {
 
     @Id
     @Column(name = "id")

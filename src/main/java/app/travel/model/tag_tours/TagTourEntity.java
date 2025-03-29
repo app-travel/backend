@@ -1,15 +1,12 @@
 package app.travel.model.tag_tours;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
-
-import java.util.UUID;
 
 @Table(name = "tag_tours")
 @Entity
@@ -19,7 +16,7 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TagTourEntity extends AuditableEntity {
+public class TagTourEntity extends AuditEntity {
 
     @Column(name = "tag_name")
     String tagName;

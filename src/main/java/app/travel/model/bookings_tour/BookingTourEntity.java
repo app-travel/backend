@@ -1,6 +1,6 @@
 package app.travel.model.bookings_tour;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -10,7 +10,6 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Table(name = "bookings_tour")
@@ -21,7 +20,7 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BookingTourEntity extends AuditableEntity {
+public class BookingTourEntity extends AuditEntity {
 
     @JoinColumn(name = "schedules_tour_id")
     UUID schedulesTourId;

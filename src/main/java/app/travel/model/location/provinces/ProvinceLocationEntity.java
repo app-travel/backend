@@ -1,6 +1,6 @@
 package app.travel.model.location.provinces;
 
-import app.travel.shared.entity.LocationFieldsEntity;
+import app.travel.shared.entity.LocationEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
@@ -14,5 +14,5 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProvinceLocationEntity extends LocationFieldsEntity {
+public class ProvinceLocationEntity extends LocationEntity {
 }

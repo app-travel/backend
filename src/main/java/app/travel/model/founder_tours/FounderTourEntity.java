@@ -1,6 +1,6 @@
 package app.travel.model.founder_tours;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -19,7 +19,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class FounderTourEntity extends AuditableEntity {
+public class FounderTourEntity extends AuditEntity {
 
     @JoinColumn(name = "user_id")
     UUID userId;

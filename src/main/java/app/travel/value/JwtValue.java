@@ -1,0 +1,19 @@
+package app.travel.value;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Getter
+@Component
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class JwtValue {
+
+    @Value("${spring.jwt.secret-key}")
+    String secretKey;
+
+    @Value("${spring.jwt.duration-time}")
+    Long durationTime;
+}

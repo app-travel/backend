@@ -1,6 +1,6 @@
 package app.travel.model.places;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -16,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PlaceEntity extends AuditableEntity {
+public class PlaceEntity extends AuditEntity {
 
     @Column(name = "place_name")
     String placeName;

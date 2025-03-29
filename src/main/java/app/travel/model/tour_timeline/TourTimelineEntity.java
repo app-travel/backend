@@ -1,6 +1,6 @@
 package app.travel.model.tour_timeline;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -9,7 +9,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Table(name = "tour_timeline")
@@ -20,7 +19,7 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TourTimelineEntity extends AuditableEntity {
+public class TourTimelineEntity extends AuditEntity {
 
     @JoinColumn(name = "tour_id")
     UUID tourId;

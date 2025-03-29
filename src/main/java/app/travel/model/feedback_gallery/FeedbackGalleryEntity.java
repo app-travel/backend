@@ -1,6 +1,6 @@
 package app.travel.model.feedback_gallery;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -19,7 +19,7 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class FeedbackGalleryEntity extends AuditableEntity {
+public class FeedbackGalleryEntity extends AuditEntity {
 
     @JoinColumn(name = "feedback_id")
     UUID feedbackId;

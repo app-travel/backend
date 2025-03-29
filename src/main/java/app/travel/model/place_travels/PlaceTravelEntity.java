@@ -1,6 +1,6 @@
 package app.travel.model.place_travels;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PlaceTravelEntity extends AuditableEntity {
+public class PlaceTravelEntity extends AuditEntity {
 
     @JoinColumn(name = "tour_id")
     UUID tourId;

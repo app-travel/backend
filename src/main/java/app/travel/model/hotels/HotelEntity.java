@@ -1,6 +1,6 @@
 package app.travel.model.hotels;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @Setter
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class HotelEntity extends AuditableEntity {
+public class HotelEntity extends AuditEntity {
 
     @Column(name = "hotel_name")
     String hotel_name;

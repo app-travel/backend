@@ -1,6 +1,6 @@
 package app.travel.model.invalid_token;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +20,7 @@ import java.util.UUID;
 @SuperBuilder
 @Schema(hidden = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class InvalidTokenEntity extends AuditableEntity {
+public class InvalidTokenEntity extends AuditEntity {
 
     @JoinColumn(name = "user_id")
     UUID userId;

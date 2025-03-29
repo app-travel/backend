@@ -1,6 +1,6 @@
 package app.travel.model.tokens;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,7 +17,7 @@ import java.util.UUID;
 @SuperBuilder
 @Schema(hidden = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TokenEntity extends AuditableEntity {
+public class TokenEntity extends AuditEntity {
 
     @JoinColumn(name = "user_id")
     UUID userId;

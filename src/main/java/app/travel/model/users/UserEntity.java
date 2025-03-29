@@ -1,11 +1,10 @@
 package app.travel.model.users;
 
-import app.travel.shared.entity.AuditableEntity;
+import app.travel.shared.entity.AuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
@@ -17,10 +16,13 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserEntity extends AuditableEntity {
+public class UserEntity extends AuditEntity {
 
     @JoinColumn(name = "role_id")
     UUID roleId;
+
+    @Column(name = "email")
+    String email;
 
     @Column(name = "username")
     String username;
