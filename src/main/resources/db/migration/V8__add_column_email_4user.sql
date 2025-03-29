@@ -5,7 +5,7 @@ alter table users
 update users u
 set email = 'admin@travel.app'
 where u.role_id = (
-    select r.id from roles r where r.role_name = 'ADMIN'
+    select r.id from roles r where r.role_name = 'SUPER_ADMIN'
     );
 
 alter table users

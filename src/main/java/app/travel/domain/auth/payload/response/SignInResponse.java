@@ -1,6 +1,6 @@
 package app.travel.domain.auth.payload.response;
 
-import app.travel.shared.payload.response.TokenResponse;
+import app.travel.shared.payload.response.JwtTokenResponse;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -12,6 +12,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SignInResponse {
 
-    TokenResponse tokens;
+    JwtTokenResponse tokens;
 
 }

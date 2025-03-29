@@ -1,9 +1,8 @@
 package app.travel.model.roles;
 
+import app.travel.common.constant.Role;
 import app.travel.shared.entity.AuditEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
@@ -19,6 +18,7 @@ import lombok.experimental.SuperBuilder;
 public class RoleEntity extends AuditEntity {
 
     @Column(name = "role_name")
-    String roleName;
+    @Enumerated(EnumType.STRING)
+    Role roleName;
 
 }

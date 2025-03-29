@@ -48,7 +48,7 @@ BEGIN
         execute 'create extension if not exists pgcrypto';
     end if;
 
-    _role_fetching := 'ADMIN';
+    _role_fetching := 'SUPER_ADMIN';
 
     _role_name := select_role_name_from_roles(_role_fetching);
 
@@ -56,7 +56,7 @@ BEGIN
         call insert_into_roles(_role_fetching);
     end if;
 
-    _role_fetching := 'USER';
+    _role_fetching := 'TOURIST';
 
     _role_name := select_role_name_from_roles(_role_fetching);
 

@@ -6,14 +6,17 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Getter
 @Component
+@Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class JwtValue {
 
     @Value("${spring.jwt.secret-key}")
     String secretKey;
 
-    @Value("${spring.jwt.duration-time}")
-    Long durationTime;
+    @Value("${spring.jwt.access-duration-time}")
+    Long accessDurationTime;
+
+    @Value("${spring.jwt.refresh-duration-time}")
+    Long refreshDurationTime;
 }

@@ -44,11 +44,26 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     @Override
+    public UserEntity getUserByUsernameOrEmail(String usernameOrEmail) {
+
+        log.info("get user by username or email {}", usernameOrEmail);
+
+        return userMapper.findByUsernameOrEmail(usernameOrEmail).orElseThrow(
+                () -> {
+
+                    log.error("get user by username or email {} failed", usernameOrEmail);
+
+                    return new BadRequestException(Error.RESOURCE_NOT_FOUND);
+                }
+        );
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         log.info("load user by username {}", username);
 
-        UserEntity userEntity = getUserByUsername(username);
+        UserEntity userEntity = getUserByUsernameOrEmail(username);
 
         RoleEntity roleEntity = roleService.getRoleById(userEntity.getRoleId());
 

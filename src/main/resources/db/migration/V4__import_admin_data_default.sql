@@ -24,14 +24,14 @@ BEGIN
     from users u
     inner join roles r
     on u.role_id = r.id
-    and r.role_name = 'ADMIN'
+    and r.role_name = 'SUPER_ADMIN'
     limit 1;
 
     if _record is not null then
         return;
     end if;
 
-    select * into _record from roles where role_name = 'ADMIN';
+    select * into _record from roles where role_name = 'SUPER_ADMIN';
 
     if _record is null then
         call import_roles_data_default();

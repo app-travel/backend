@@ -15,7 +15,8 @@ spring:
 
   jwt:
     secret-key: xg5EQtqpgSHdAv/HJKHBLiPY9qKsnzpyO2knO+YJxPY=oupyVIuBSzapi42BgeLikDHepEcKptqiyd6WTcQ0rkk=
-    duration-time: 300000
+    access-duration-time: 300000
+    refresh-duration-time: 604800000
 
   flyway:
     user: postgres

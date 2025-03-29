@@ -2,14 +2,16 @@ package app.travel.domain.auth.service;
 
 import app.travel.advice.exception.templates.ErrorHolderException;
 import app.travel.common.constant.Error;
+import app.travel.common.constant.JwtTokenType;
 import app.travel.domain.auth.payload.request.SignInRequest;
 import app.travel.domain.auth.payload.response.SignInResponse;
+import app.travel.shared.payload.response.JwtTokenResponse;
+import app.travel.shared.service.jwt.IJwtService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +24,7 @@ public class AuthService implements IAuthService{
 
     AuthenticationManager authenticationManager;
 
+    IJwtService jwtService;
 
     @Override
     public SignInResponse signIn(SignInRequest request) {
@@ -35,8 +38,17 @@ public class AuthService implements IAuthService{
         if(!userDetails.isEnabled())
             throw new ErrorHolderException(Error.ACCOUNT_DISABLED);
 
+        String accessToken = jwtService.generateToken(userDetails, JwtTokenType.ACCESS);
 
+        String refreshToken = jwtService.generateToken(userDetails, JwtTokenType.REFRESH);
 
-        return null;
+        JwtTokenResponse tokensResponse = JwtTokenResponse.builder()
+                .access(accessToken)
+                .refresh(refreshToken)
+                .build();
+
+        return SignInResponse.builder()
+                .tokens(tokensResponse)
+                .build();
     }
 }

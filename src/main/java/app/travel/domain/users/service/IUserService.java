@@ -6,4 +6,6 @@ public interface IUserService {
 
     UserEntity getUserByUsername(String username);
 
+    UserEntity getUserByUsernameOrEmail(String usernameOrEmail);
+
 }
