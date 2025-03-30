@@ -24,3 +24,32 @@ spring:
     enabled: true
     baseline-on-migrate: true
     baseline-version: 0
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+    tags-sorter: alpha
+    operations-sorter: method
+  show-actuator: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /travel-app/api/v1.0
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.mybatis: DEBUG
+    app.travel: DEBUG
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false

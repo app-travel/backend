@@ -15,7 +15,7 @@ public enum Error {
     UNAUTHORIZED("You are not authorized to access this resource.", HttpStatus.UNAUTHORIZED),
     FORBIDDEN("You don't have permission to access this resource.", HttpStatus.FORBIDDEN),
     SERVER_ERROR("Server error.", HttpStatus.INTERNAL_SERVER_ERROR),
-    ACCOUNT_DISABLED("Account locked.", HttpStatus.LOCKED);
+    ACCOUNT_DISABLED("Account locked.", HttpStatus.FORBIDDEN);
 
     // >> ---------------------------------------------------------------------- <<
 

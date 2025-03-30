@@ -35,9 +35,6 @@ public class AuthService implements IAuthService{
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-        if(!userDetails.isEnabled())
-            throw new ErrorHolderException(Error.ACCOUNT_DISABLED);
-
         String accessToken = jwtService.generateToken(userDetails, JwtTokenType.ACCESS);
 
         String refreshToken = jwtService.generateToken(userDetails, JwtTokenType.REFRESH);

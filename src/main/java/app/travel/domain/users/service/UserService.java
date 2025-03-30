@@ -3,7 +3,6 @@ package app.travel.domain.users.service;
 import app.travel.advice.exception.templates.BadRequestException;
 import app.travel.common.constant.Error;
 import app.travel.model.roles.RoleEntity;
-import app.travel.model.roles.RoleMapper;
 import app.travel.model.users.UserEntity;
 import app.travel.model.users.UserMapper;
 import app.travel.shared.identity.UserDetailsImpl;
@@ -63,7 +62,15 @@ public class UserService implements IUserService, UserDetailsService {
 
         log.info("load user by username {}", username);
 
-        UserEntity userEntity = getUserByUsernameOrEmail(username);
+        UserEntity userEntity = userMapper.findByUsernameOrEmail(username)
+                        .orElseThrow(
+                                () -> {
+
+                                    log.error("load user by username or email {} failed", username);
+
+                                    return new UsernameNotFoundException(Error.BAD_CREDENTIALS.getMessage());
+                                }
+                        );
 
         RoleEntity roleEntity = roleService.getRoleById(userEntity.getRoleId());
 

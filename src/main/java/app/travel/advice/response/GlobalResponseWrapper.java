@@ -10,8 +10,12 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.lang.NonNull;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+
+import java.lang.annotation.Annotation;
 
 @RestControllerAdvice
 public class GlobalResponseWrapper implements ResponseBodyAdvice<Object> {
@@ -36,7 +40,7 @@ public class GlobalResponseWrapper implements ResponseBodyAdvice<Object> {
         return !packageName.contains("springdoc") &&
                 !packageName.contains("swagger") &&
                 (
-                   objectReturnType.equals(ResultApiResponse.class) ||
+                   declaringClass.getAnnotation(RestController.class) != null ||
                    objectReturnType.equals(ResultApiResponse.ErrorResponse.class)
                 );
     }
@@ -61,9 +65,13 @@ public class GlobalResponseWrapper implements ResponseBodyAdvice<Object> {
             return errorResponse;
         }
 
-        HttpStatus statusResponse = statusOfMethod(request.getMethod());
+        ResponseStatus responseStatus = returnType.getMethodAnnotation(ResponseStatus.class);
 
-        DefaultMessage defaultMessage = returnType.getMethod().getAnnotation(DefaultMessage.class);
+        HttpStatus statusResponse = responseStatus != null ? responseStatus.value() : statusOfMethod(request.getMethod());
+
+        response.setStatusCode(statusResponse);
+
+        DefaultMessage defaultMessage = returnType.getMethodAnnotation(DefaultMessage.class);
 
         return ResultApiResponse.builder()
                 .success(Boolean.TRUE)

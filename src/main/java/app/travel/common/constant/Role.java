@@ -34,11 +34,11 @@ public enum Role {
 
         if(authority == null) return Role.TOURIST;
 
-        String _role = authority.getAuthority().split("ROLE_")[1];
+        String role_name = authority.getAuthority() == null ? "" : authority.getAuthority().split("ROLE_")[1];
 
         return Arrays.stream(Role.values())
                 .filter(
-                        role -> role.name().equalsIgnoreCase(_role)
+                        role -> role.name().equalsIgnoreCase(role_name)
                 )
                 .findFirst()
                 .orElse(TOURIST);

@@ -12,9 +12,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PasswordFormat {
 
-    String message() default "The password must be at least 8 characters and at most 32 characters long, contain at least one digit, and must not include any special characters.";
+    String message() default "The password must be at least 8 characters and at most 32 characters long, contain at least one digit, and must contain 1 or 2 special characters like !@#$%^&*.";
 
-    String regex() default "^(?=.*\\d)[A-Za-z\\d]{8,32}$";
+    String regex() default "^(?=.*\\d)(?=.*[@.!#$%^&*])[A-Za-z\\d@.!#$%^&*]{8,32}$";
 
     Class<?>[] groups() default {};
 
