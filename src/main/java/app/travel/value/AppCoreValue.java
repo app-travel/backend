@@ -14,7 +14,10 @@ public class AppCoreValue {
     @Value("${server.servlet.context-path}")
     String prefixPath;
 
-    @Value("${app.api.path.refresh-token}")
+    @Value("${app.backend.api.path.refresh-token}")
     String refreshTokenPath;
+
+    @Value("${app.frontend.route.signup-confirm}")
+    String feSignupConfirmPath;
 
 }

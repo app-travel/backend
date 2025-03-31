@@ -15,6 +15,7 @@ public enum Error {
     UNAUTHORIZED("You are not authorized to access this resource.", HttpStatus.UNAUTHORIZED),
     FORBIDDEN("You don't have permission to access this resource.", HttpStatus.FORBIDDEN),
     SERVER_ERROR("Server error.", HttpStatus.INTERNAL_SERVER_ERROR),
+    CLIENT_ERROR("Client error.", HttpStatus.BAD_REQUEST),
     ACCOUNT_DISABLED("Account locked.", HttpStatus.FORBIDDEN),
     INVALID_JWT_SIGNATURE("Invalid token signature.", HttpStatus.UNAUTHORIZED),
     TOKEN_EXPIRED("Token expired.", HttpStatus.UNAUTHORIZED),

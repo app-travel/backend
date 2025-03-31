@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
@@ -22,6 +23,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -114,7 +117,7 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
     }
 
     @ExceptionHandler({DisabledException.class})
-    public ResultApiResponse.ErrorResponse handleDisabledException(AuthenticationException err){
+    public ResultApiResponse.ErrorResponse handleDisabledException(AuthenticationException ignored){
 
         Error error = Error.ACCOUNT_DISABLED;
 
@@ -127,9 +130,22 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
             UsernameNotFoundException.class,
             BadCredentialsException.class
     })
-    public ResultApiResponse.ErrorResponse handleBadCredentialsException(AuthenticationException err){
+    public ResultApiResponse.ErrorResponse handleBadCredentialsException(AuthenticationException ignored){
 
         Error error = Error.BAD_CREDENTIALS;
+
+        logError(error);
+
+        return ResultApiResponse.ErrorResponse.build(error);
+    }
+
+    @ExceptionHandler({
+            ClientAbortException.class,
+            HttpClientErrorException.class
+    })
+    public ResultApiResponse.ErrorResponse handlerClientError(Exception ignored){
+
+        Error error = Error.CLIENT_ERROR;
 
         logError(error);
 

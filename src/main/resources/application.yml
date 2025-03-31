@@ -37,11 +37,6 @@ springdoc:
     operations-sorter: method
   show-actuator: true
 
-app:
-  api:
-    path:
-      refresh-token: /auth/refresh-token
-
 server:
   port: 8080
   servlet:
@@ -59,3 +54,12 @@ mybatis:
     cache-enabled: false
     lazy-loading-enabled: true
     aggressive-lazy-loading: false
+
+app:
+  backend:
+    api:
+      path:
+        refresh-token: /auth/refresh-token
+  frontend:
+    route:
+      signup-confirm: /signup/confirm

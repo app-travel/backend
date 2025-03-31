@@ -5,7 +5,6 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-
 import java.util.regex.Pattern;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
