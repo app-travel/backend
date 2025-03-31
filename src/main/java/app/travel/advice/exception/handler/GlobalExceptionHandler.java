@@ -1,11 +1,9 @@
 package app.travel.advice.exception.handler;
 
-import app.travel.advice.exception.templates.BadRequestException;
 import app.travel.advice.exception.templates.ErrorHolderException;
 import app.travel.common.constant.Error;
 import app.travel.shared.payload.response.FieldErrorResponse;
 import app.travel.shared.payload.response.ResultApiResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.core.util.Json;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,7 +34,7 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
         log.error("{} - error code {}", error.getMessage(), error.getStatus().value());
     }
 
-    private void writeBodyExceptionResponse(HttpServletRequest request, HttpServletResponse response, Error error) throws IOException {
+    public void writeBodyExceptionResponse(HttpServletRequest request, HttpServletResponse response, Error error) throws IOException {
 
         response.setStatus(error.getStatus().value());
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -105,10 +103,7 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
 
     }
 
-    @ExceptionHandler({
-            BadRequestException.class,
-            ErrorHolderException.class
-    })
+    @ExceptionHandler({ErrorHolderException.class})
     public ResultApiResponse.ErrorResponse handleCustomException(ErrorHolderException err){
 
         Error error = err.getError();

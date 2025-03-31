@@ -1,6 +1,6 @@
 package app.travel.domain.users.service;
 
-import app.travel.advice.exception.templates.BadRequestException;
+import app.travel.advice.exception.templates.ErrorHolderException;
 import app.travel.common.constant.Error;
 import app.travel.model.roles.RoleEntity;
 import app.travel.model.users.UserEntity;
@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @Slf4j(topic = "USER-SERVICE")
@@ -37,7 +39,7 @@ public class UserService implements IUserService, UserDetailsService {
 
                     log.error("get user by username {} failed", username);
 
-                    return new BadRequestException(Error.RESOURCE_NOT_FOUND);
+                    return new ErrorHolderException(Error.RESOURCE_NOT_FOUND);
                 }
         );
     }
@@ -52,7 +54,7 @@ public class UserService implements IUserService, UserDetailsService {
 
                     log.error("get user by username or email {} failed", usernameOrEmail);
 
-                    return new BadRequestException(Error.RESOURCE_NOT_FOUND);
+                    return new ErrorHolderException(Error.RESOURCE_NOT_FOUND);
                 }
         );
     }
@@ -78,5 +80,20 @@ public class UserService implements IUserService, UserDetailsService {
                 .user(userEntity)
                 .role(roleEntity)
                 .build();
+    }
+
+    @Override
+    public UserEntity getUserById(UUID id) {
+
+        log.info("get user by id {}", id);
+
+        return userMapper.findById(id).orElseThrow(
+                () -> {
+
+                    log.error("get user by id {} failed", id);
+
+                    return new ErrorHolderException(Error.RESOURCE_NOT_FOUND);
+                }
+        );
     }
 }

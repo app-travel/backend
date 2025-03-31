@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class JwtValue {
 
+    @Value("${spring.jwt.issuer}")
+    String issuer;
+
     @Value("${spring.jwt.secret-key}")
     String secretKey;
 

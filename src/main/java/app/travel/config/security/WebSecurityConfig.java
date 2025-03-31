@@ -1,7 +1,7 @@
 package app.travel.config.security;
 
 import app.travel.config.middleware.filter.MiddlewareFilterConfig;
-import app.travel.value.WebCoreValue;
+import app.travel.value.AppCoreValue;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -27,7 +27,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class WebSecurityConfig {
 
-    WebCoreValue webCoreValue;
+    AppCoreValue appCoreValue;
 
     AuthenticationEntryPoint authenticationEntryPoint;
 
@@ -38,7 +38,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        String prefixPath = String.format("%s/**", webCoreValue.getPrefixPath());
+        String prefixPath = String.format("%s/**", appCoreValue.getPrefixPath());
 
         return http
                 .csrf(AbstractHttpConfigurer::disable)
@@ -75,7 +75,7 @@ public class WebSecurityConfig {
 
         UrlBasedCorsConfigurationSource urlBasedCors = new UrlBasedCorsConfigurationSource();
 
-        String patternUrl = String.format("%s/**", webCoreValue.getPrefixPath());
+        String patternUrl = String.format("%s/**", appCoreValue.getPrefixPath());
         urlBasedCors.registerCorsConfiguration(patternUrl, corsConfiguration);
 
         corsConfigurer.configurationSource(urlBasedCors);

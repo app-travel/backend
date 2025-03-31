@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
-
 import java.util.Arrays;
 
 @Getter
@@ -15,16 +14,16 @@ public enum Role {
     FOUNDER("FOUNDER"),
     SUPER_ADMIN("SUPER ADMIN");
 
-    String roleName;
+    String prettyRoleName;
 
-    Role(String roleName){
-        this.roleName = roleName;
+    Role(String prettyRoleName){
+        this.prettyRoleName = prettyRoleName;
     }
 
-    public static Role fromRoleName(String name){
+    public static Role fromPrettyRoleName(String name){
         return Arrays.stream(Role.values())
                 .filter(
-                        role -> role.getRoleName().equalsIgnoreCase(name)
+                        role -> role.getPrettyRoleName().equalsIgnoreCase(name)
                 )
                 .findFirst()
                 .orElse(TOURIST);
@@ -34,11 +33,13 @@ public enum Role {
 
         if(authority == null) return Role.TOURIST;
 
-        String role_name = authority.getAuthority() == null ? "" : authority.getAuthority().split("ROLE_")[1];
+        if(authority.getAuthority() == null) return Role.TOURIST;
+
+        String roleName =  authority.getAuthority().substring("ROLE_".length()).trim();
 
         return Arrays.stream(Role.values())
                 .filter(
-                        role -> role.name().equalsIgnoreCase(role_name)
+                        role -> role.name().equalsIgnoreCase(roleName)
                 )
                 .findFirst()
                 .orElse(TOURIST);

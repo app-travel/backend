@@ -1,5 +1,7 @@
 package app.travel.shared.service.jwt;
 
+import app.travel.advice.exception.templates.ErrorHolderException;
+import app.travel.common.constant.Error;
 import app.travel.common.constant.JwtTokenType;
 import app.travel.common.constant.Role;
 import app.travel.value.JwtValue;
@@ -10,7 +12,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
-import org.springframework.security.authentication.AuthenticationServiceException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,7 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+@Slf4j(topic = "JWT-SERVICE")
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -63,20 +66,20 @@ public class JwtService implements IJwtService{
             Claims claims = getAllClaimsFromToken(token);
             return claims.getSubject() != null && !isTokenExpired(token);
         } catch (SecurityException e) {
-            System.err.println(e.getMessage());
-            throw new AuthenticationServiceException("Invalid jwt signature.");
+            log.error(e.getMessage());
+            throw new ErrorHolderException(Error.INVALID_JWT_SIGNATURE);
         } catch (MalformedJwtException e) {
-            System.err.println(e.getMessage());
-            throw new AuthenticationServiceException("Invalid jwt.");
+            log.error(e.getMessage());
+            throw new ErrorHolderException(Error.INVALID_TOKEN);
         } catch (ExpiredJwtException e) {
-            System.err.println(e.getMessage());
-            throw new AuthenticationServiceException("Jwt is expired.");
+            log.error(e.getMessage());
+            throw new ErrorHolderException(Error.TOKEN_EXPIRED);
         } catch (UnsupportedJwtException e) {
-            System.err.println(e.getMessage());
-            throw new AuthenticationServiceException("Jwt is unsupported.");
+            log.error(e.getMessage());
+            throw new ErrorHolderException(Error.JWT_UNSUPPORTED);
         } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-            throw new AuthenticationServiceException("Jwt payload is empty.");
+            log.error(e.getMessage());
+            throw new ErrorHolderException(Error.JWT_PAYLOAD_EMPTY);
         }
     }
 
@@ -86,7 +89,7 @@ public class JwtService implements IJwtService{
         Map<String, Object> claims = new HashMap<>();
 
         claims.put("scp", buildScope(userDetails.getAuthorities()));
-        claims.put("aud", Set.of("travel-app"));
+        claims.put("aud", Set.of(jwtValue.getIssuer()));
 
         return createToken(claims, userDetails.getUsername(), jwtTokenType);
     }
@@ -97,7 +100,7 @@ public class JwtService implements IJwtService{
 
         Role role = Role.fromAuthority(authority);
 
-        return role.getRoleName();
+        return role.getPrettyRoleName();
     }
 
     private String createToken(Map<String, Object> claims, String username, JwtTokenType jwtTokenType) {
@@ -108,7 +111,10 @@ public class JwtService implements IJwtService{
             durationTime = jwtValue.getRefreshDurationTime();
 
         return Jwts.builder()
+                .header().add("typ", "JWT")
+                .and()
                 .claims(claims)
+                .issuer(jwtValue.getIssuer())
                 .subject(username)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + durationTime))

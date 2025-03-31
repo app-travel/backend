@@ -3,6 +3,8 @@ package app.travel.shared.payload.response;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,6 +15,6 @@ public class JwtTokenResponse {
 
     String access;
 
-    String refresh;
+//    UUID refresh;
 
 }

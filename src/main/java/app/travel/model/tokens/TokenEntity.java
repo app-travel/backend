@@ -1,5 +1,6 @@
 package app.travel.model.tokens;
 
+import app.travel.common.constant.JwtTokenType;
 import app.travel.shared.entity.AuditEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -26,6 +27,7 @@ public class TokenEntity extends AuditEntity {
     String token;
 
     @Column(name = "token_type")
-    String tokenType;
+    @Enumerated(EnumType.STRING)
+    JwtTokenType tokenType;
 
 }

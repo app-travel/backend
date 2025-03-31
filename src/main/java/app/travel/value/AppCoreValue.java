@@ -9,9 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class WebCoreValue {
+public class AppCoreValue {
 
     @Value("${server.servlet.context-path}")
     String prefixPath;
+
+    @Value("${app.api.path.refresh-token}")
+    String refreshTokenPath;
 
 }

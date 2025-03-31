@@ -11,7 +11,7 @@ public interface RoleMapper {
     @Select("SELECT * FROM roles r " +
             "WHERE r.id = #{id}"
     )
-    @Results(id = "RoleEntityFieldsMap", value = {
+    @Results(id = "RoleEntityResultMap", value = {
             @Result(column = "role_name", property = "roleName"),
             @Result(column = "created_at", property = "createdAt"),
             @Result(column = "updated_at", property = "updatedAt")

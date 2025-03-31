@@ -11,7 +11,7 @@ public interface UserMapper {
     @Select("SELECT * FROM users u " +
             "WHERE u.id = #{id}"
     )
-    @Results(id = "UserEntityFieldsMap", value = {
+    @Results(id = "UserEntityResultMap", value = {
             @Result(column = "role_id", property = "roleId"),
             @Result(column = "is_enabled", property = "isEnabled"),
             @Result(column = "created_at", property = "createdAt"),
@@ -23,7 +23,7 @@ public interface UserMapper {
     @Select("SELECT * FROM users u " +
             "WHERE u.username = #{username}"
     )
-    @ResultMap("UserEntityFieldsMap")
+    @ResultMap("UserEntityResultMap")
     Optional<UserEntity> findByUsername(@Param("username") String username);
 
 
@@ -31,7 +31,7 @@ public interface UserMapper {
             "WHERE u.username = #{usernameOrEmail} " +
             "OR u.email = #{usernameOrEmail}"
     )
-    @ResultMap("UserEntityFieldsMap")
+    @ResultMap("UserEntityResultMap")
     Optional<UserEntity> findByUsernameOrEmail(@Param("usernameOrEmail") String usernameOrEmail);
 
 }

@@ -15,8 +15,9 @@ spring:
 
   jwt:
     secret-key: xg5EQtqpgSHdAv/HJKHBLiPY9qKsnzpyO2knO+YJxPY=oupyVIuBSzapi42BgeLikDHepEcKptqiyd6WTcQ0rkk=
-    access-duration-time: 300000
+    access-duration-time: 900000
     refresh-duration-time: 604800000
+    issuer: travel-app
 
   flyway:
     user: postgres
@@ -35,6 +36,11 @@ springdoc:
     tags-sorter: alpha
     operations-sorter: method
   show-actuator: true
+
+app:
+  api:
+    path:
+      refresh-token: /auth/refresh-token
 
 server:
   port: 8080
