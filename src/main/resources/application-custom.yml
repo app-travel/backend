@@ -6,12 +6,18 @@ app:
       signup-confirm: /signup/confirm
 
   jwt:
-    secret-key: xg5EQtqpgSHdAv/HJKHBLiPY9qKsnzpyO2knO+YJxPY=oupyVIuBSzapi42BgeLikDHepEcKptqiyd6WTcQ0rkk=
+    secret-key: a7be40ad1f1c719e6b629f3dd25b749eba637f11a3379732288cd5db5b2e82374ee785dac295bc36d71a440eeb8ed9ab75f0044ac836eb80103d94b2f1f25ae7
     access-duration-time: 900000
     refresh-duration-time: 604800000
     issuer: travel-app
 
+  server:
+    secret-key:
+      crypto:
+        aes-gcm: 0bcc3ac262ae691c6456a7348b6e8319
+
   mail:
+    from: nam2023.11.07@gmail.com
     templates:
       signup-confirm: mail-signup-confirm-template.html
     subjects:

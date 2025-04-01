@@ -2,6 +2,7 @@ package app.travel.domain.auth.controller;
 
 import app.travel.common.annotation.DefaultMessage;
 import app.travel.domain.auth.payload.request.SignInRequest;
+import app.travel.domain.auth.payload.request.SignUpRequest;
 import app.travel.domain.auth.payload.response.SignInResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,12 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+
 public interface IAuthController {
 
     @PostMapping("/sign-in")
     @DefaultMessage(message = "Authentication successful.")
     @ResponseStatus(HttpStatus.OK)
     SignInResponse signIn(@Valid @RequestBody SignInRequest request, HttpServletResponse response);
+
+    @PostMapping("/sign-up")
+    @DefaultMessage(message = "Send email for register confirm successful.")
+    @ResponseStatus(HttpStatus.OK)
+    void signUp(@Valid @RequestBody SignUpRequest request) throws Exception;
 
     @GetMapping("/refresh-token")
     @DefaultMessage(message = "Refreshing successful.")

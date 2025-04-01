@@ -51,6 +51,8 @@ dependencies {
 	implementation 'org.flywaydb:flyway-core:11.4.0'
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
 	implementation("org.springframework.boot:spring-boot-starter-mail:3.4.4")
+	// https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on
+	implementation("org.bouncycastle:bcprov-jdk18on:1.80")
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'

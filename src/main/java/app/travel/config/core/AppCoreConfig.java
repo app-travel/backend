@@ -70,18 +70,24 @@ public class AppCoreConfig {
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine(){
+    public SpringTemplateEngine templateEngine(SpringResourceTemplateResolver templateResolver){
 
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+
+        templateEngine.setTemplateResolver(templateResolver);
+
+        return templateEngine;
+    }
+
+    @Bean
+    public SpringResourceTemplateResolver templateResolver(){
 
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setPrefix("classpath:/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML");
 
-        templateEngine.setTemplateResolver(templateResolver);
-
-        return templateEngine;
+        return templateResolver;
     }
 
 }

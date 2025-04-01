@@ -1,14 +1,12 @@
 package app.travel.domain.auth.controller;
 
 
-import app.travel.common.annotation.DefaultMessage;
-import app.travel.common.constant.JwtTokenType;
 import app.travel.domain.auth.payload.request.SignInRequest;
+import app.travel.domain.auth.payload.request.SignUpRequest;
 import app.travel.domain.auth.payload.response.SignInResponse;
 import app.travel.domain.auth.service.IAuthService;
-import app.travel.shared.service.cookie.ICookieService;
+import app.travel.shared.service.mailer.IMailerService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AccessLevel;
@@ -16,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @Tag(name = "Auth-Api-Endpoints")
@@ -26,8 +25,7 @@ public class AuthController implements IAuthController{
 
     IAuthService authService;
 
-    ICookieService cookieService;
-
+    IMailerService mailerService;
 
     @Override
     public SignInResponse signIn(SignInRequest request, HttpServletResponse response) {
@@ -36,8 +34,15 @@ public class AuthController implements IAuthController{
     }
 
     @Override
+    public void signUp(SignUpRequest request) throws Exception {
+
+        mailerService.sendEmailConfirmSignup(request);
+    }
+
+    @Override
     public SignInResponse refreshToken(HttpServletRequest request) {
 
         return authService.refreshToken(request);
     }
+
 }

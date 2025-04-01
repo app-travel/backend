@@ -9,15 +9,16 @@
             font-family: sans-serif;
             word-spacing: .3px;
             letter-spacing: .1px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
-    <table style="padding: 24px; background-color: cornsilk; max-width: 550px; min-width: 100%; margin: 12px">
+    <table style="padding: 24px; background-color: cornsilk; max-width: 550px; min-width: 100%">
         <tbody>
             <tr>
                 <td style="margin-bottom: 24px">
-                    <img style="width: 12px; height: 12px; border-radius: 4px" src="https://static-00.iconduck.com/assets.00/fireworks-emoji-2048x2048-myr8wsym.png" />
+                    <img style="width: 16px; height: 16px; border-radius: 4px" src="https://static-00.iconduck.com/assets.00/fireworks-emoji-2048x2048-myr8wsym.png" />
                     <strong style="font-size: 24px; color: #333;">Welcome to travel app run4ever</strong>
                 </td>
             </tr>
@@ -25,15 +26,15 @@
                 <td style="font-size: 16px;">
                     <p style="margin-bottom: 12px">Let's confirm for register to join with us.</p>
                     <p>
-                        <img style="width: 12px; height: 12px; border-radius: 4px" src="https://w7.pngwing.com/pngs/558/907/png-transparent-snake-vs-bricks-emoji-version-handshake-emojipedia-hand-emoji-hand-apple-color-emoji-emoticon.png">
-                        <a href="{link-fe-signin-confirm}">
-                            [[${link-fe-signin-confirm}]]
+                        <img style="width: 16px; height: 16px; border-radius: 4px" src="https://w7.pngwing.com/pngs/558/907/png-transparent-snake-vs-bricks-emoji-version-handshake-emojipedia-hand-emoji-hand-apple-color-emoji-emoticon.png">
+                        <a style="font-size: 14px !important;" th:href="${linkFeSignUpConfirm}">
+                            [[${linkFeSignUpConfirm}]]
                         </a>
                     </p>
                 </td>
             </tr>
             <tr>
-                <td style="margin-top: auto; color: #555; font-size: 12px; font-style: italic   ">
+                <td style="margin-top: auto; color: #555; font-size: 12px; font-weight: lighter; font-style: italic   ">
                     [[${year}]] &#169; Building by Nam & Bach (We're not dev) &#174; #dev4skill- #dev4us - #2devcuibep
                 </td>
             </tr>

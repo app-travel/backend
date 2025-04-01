@@ -15,14 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import java.lang.annotation.Annotation;
-
 @RestControllerAdvice
 public class GlobalResponseWrapper implements ResponseBodyAdvice<Object> {
 
     @Override
     public boolean supports(
-            MethodParameter returnType,
+            @NonNull MethodParameter returnType,
             @NonNull Class<? extends HttpMessageConverter<?>> converterType
     ) {
 
@@ -36,6 +34,13 @@ public class GlobalResponseWrapper implements ResponseBodyAdvice<Object> {
         System.out.println("declaringClass: " + declaringClass);
         System.out.println("----------- supports ResponseBodyAdvice -----------");
         // -> end (1)
+
+        System.out.println(!packageName.contains("springdoc") &&
+                !packageName.contains("swagger") &&
+                (
+                        declaringClass.getAnnotation(RestController.class) != null ||
+                                objectReturnType.equals(ResultApiResponse.ErrorResponse.class)
+                ));
 
         return !packageName.contains("springdoc") &&
                 !packageName.contains("swagger") &&
@@ -54,6 +59,8 @@ public class GlobalResponseWrapper implements ResponseBodyAdvice<Object> {
             @NonNull ServerHttpRequest request,
             @NonNull ServerHttpResponse response
     ) {
+
+        System.out.println("-->> beforeBodyWrite");
 
         if(body instanceof ResultApiResponse.ErrorResponse errorResponse){
 

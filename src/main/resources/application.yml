@@ -24,12 +24,21 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: nam2023.11.07@gmail.com
-    password: Khong@123145667899
-    properties:
-      mail.smtp.auth: true
-      mail.smtp.starttls.enable: true
+    username: nam2023.11.07
+    password: dneaswjmlqxjlohf
     protocol: smtp
+    properties:
+      debug: true
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          socketFactory:
+            fallback: true
+          connectiontimeout: 5000
+          writetimeout: 5000
+          timeout: 5000
 
 springdoc:
   api-docs:
