@@ -77,8 +77,8 @@ public class AuthService implements IAuthService{
         CookieTransfer cookieTransfer = CookieTransfer.builder()
                 .key(JwtTokenType.REFRESH.getNameSpecial())
                 .value(refreshTokenEntity.getId().toString())
-                .path(appCoreValue.getRefreshTokenPath())
-                .maxAge((int) (jwtValue.getRefreshDurationTime() / 1000))
+                .path(String.format("%s/", appCoreValue.getRefreshTokenPath()))
+                .maxAge(jwtValue.getRefreshDurationTime().intValue())
                 .build();
 
         cookieService.sendCookieInclude(cookieTransfer, response);

@@ -10,7 +10,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import javax.sql.DataSource;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
@@ -66,6 +67,21 @@ public class AppCoreConfig {
         });
 
         return factoryBean.getObject();
+    }
+
+    @Bean
+    public SpringTemplateEngine templateEngine(){
+
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+
+        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setPrefix("classpath:/templates/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode("HTML");
+
+        templateEngine.setTemplateResolver(templateResolver);
+
+        return templateEngine;
     }
 
 }

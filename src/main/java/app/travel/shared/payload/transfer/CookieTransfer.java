@@ -21,4 +21,7 @@ public class CookieTransfer {
 
     Integer maxAge;
 
+    public Integer getMaxAge() {
+        return maxAge / 1000;
+    }
 }

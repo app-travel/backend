@@ -1,0 +1,18 @@
+app:
+  path:
+    backend:
+      refresh-token: /auth/refresh-token
+    frontend:
+      signup-confirm: /signup/confirm
+
+  jwt:
+    secret-key: xg5EQtqpgSHdAv/HJKHBLiPY9qKsnzpyO2knO+YJxPY=oupyVIuBSzapi42BgeLikDHepEcKptqiyd6WTcQ0rkk=
+    access-duration-time: 900000
+    refresh-duration-time: 604800000
+    issuer: travel-app
+
+  mail:
+    templates:
+      signup-confirm: mail-signup-confirm-template.html
+    subjects:
+      signup-confirm: Confirm your register with Travel App.

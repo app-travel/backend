@@ -16,7 +16,7 @@ public @interface UsernameFormat {
 
     String message() default "Username must contain only lowercase letters, special characters (._@), and at least one digit.";
 
-    String regex() default "^(?=.*\\d)[a-z0-9._@]+$";
+    String regex() default "^(?=.*\\d)[a-zA-Z\\d.@_]{12,}$";
 
     Class<?>[] groups() default {};
 

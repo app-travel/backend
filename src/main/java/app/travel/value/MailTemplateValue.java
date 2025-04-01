@@ -9,17 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class JwtValue {
+public class MailTemplateValue {
 
-    @Value("${app.jwt.issuer}")
-    String issuer;
+    @Value("${app.mail.templates.signup-confirm}")
+    String signupConfirmTemplate;
 
-    @Value("${app.jwt.secret-key}")
-    String secretKey;
-
-    @Value("${app.jwt.access-duration-time}")
-    Long accessDurationTime;
-
-    @Value("${app.jwt.refresh-duration-time}")
-    Long refreshDurationTime;
+    @Value("${app.mail.subjects.signup-confirm}")
+    String signupConfirmSubject;
 }

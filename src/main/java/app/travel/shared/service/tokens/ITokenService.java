@@ -3,7 +3,6 @@ package app.travel.shared.service.tokens;
 import app.travel.common.constant.JwtTokenType;
 import app.travel.model.tokens.TokenEntity;
 import app.travel.model.users.UserEntity;
-import jakarta.transaction.Transactional;
 
 import java.util.UUID;
 

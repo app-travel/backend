@@ -3,3 +3,8 @@ spring:
     url: jdbc:postgresql://localhost:5433/travel-world
     username: postgres
     password: 123123
+
+app:
+  domain:
+    backend: http://localhost:8080
+    frontend: http://localhost:3000

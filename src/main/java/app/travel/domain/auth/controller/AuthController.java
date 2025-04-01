@@ -2,10 +2,13 @@ package app.travel.domain.auth.controller;
 
 
 import app.travel.common.annotation.DefaultMessage;
+import app.travel.common.constant.JwtTokenType;
 import app.travel.domain.auth.payload.request.SignInRequest;
 import app.travel.domain.auth.payload.response.SignInResponse;
 import app.travel.domain.auth.service.IAuthService;
+import app.travel.shared.service.cookie.ICookieService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AccessLevel;
@@ -22,6 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController implements IAuthController{
 
     IAuthService authService;
+
+    ICookieService cookieService;
+
 
     @Override
     public SignInResponse signIn(SignInRequest request, HttpServletResponse response) {

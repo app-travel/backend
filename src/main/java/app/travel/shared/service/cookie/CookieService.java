@@ -2,17 +2,27 @@ package app.travel.shared.service.cookie;
 
 
 import app.travel.advice.exception.templates.ErrorHolderException;
+import app.travel.common.constant.CookieSameSite;
 import app.travel.common.constant.Error;
 import app.travel.shared.payload.transfer.CookieTransfer;
+import app.travel.value.AppCoreValue;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 
 @Service
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CookieService implements ICookieService{
+
+    AppCoreValue appCoreValue;
 
     @Override
     public Boolean sendCookieInclude(CookieTransfer cookieTransfer, HttpServletResponse response) {
@@ -22,14 +32,21 @@ public class CookieService implements ICookieService{
         if(cookieTransfer.getKey() == null || cookieTransfer.getValue().isBlank())
             return Boolean.FALSE;
 
-        Cookie cookie = new Cookie(cookieTransfer.getKey(), cookieTransfer.getValue());
+        String backendDomain = appCoreValue.getBackendDomain()
+                .replaceFirst("https?://", "")
+                .replaceAll(":\\d+", "")
+                .toLowerCase();
 
-        cookie.setHttpOnly(Boolean.TRUE);
-        cookie.setSecure(Boolean.TRUE);
-        cookie.setPath(cookieTransfer.getPath());
-        cookie.setMaxAge(cookieTransfer.getMaxAge());
+        ResponseCookie responseCookie = ResponseCookie.from(cookieTransfer.getKey(), cookieTransfer.getValue())
+                .path(cookieTransfer.getPath())
+                .sameSite(CookieSameSite.STRICT.getPrettyName())
+                .httpOnly(Boolean.TRUE)
+                .secure(Boolean.TRUE)
+                .domain(backendDomain)
+                .maxAge(cookieTransfer.getMaxAge())
+                .build();
 
-        response.addCookie(cookie);
+        response.addHeader(HttpHeaders.SET_COOKIE, responseCookie.toString());
 
         return Boolean.TRUE;
     }
