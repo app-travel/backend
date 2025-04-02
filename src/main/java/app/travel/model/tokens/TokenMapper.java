@@ -19,4 +19,9 @@ public interface TokenMapper {
     })
     Optional<TokenEntity> findById(@Param("id") UUID id);
 
+    @Select("SELECT * FROM tokens t " +
+            "WHERE t.token = #{token}"
+    )
+    Optional<TokenEntity> findByToken(@Param("token") String token);
+
 }

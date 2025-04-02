@@ -16,4 +16,6 @@ public interface ITokenService {
 
     TokenEntity getTokenById(UUID id);
 
+    TokenEntity getTokenByToken(String token, Boolean throwable);
+
 }

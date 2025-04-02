@@ -4,6 +4,8 @@ import app.travel.advice.exception.templates.ErrorHolderException;
 import app.travel.common.constant.Error;
 import app.travel.common.constant.JwtTokenType;
 import app.travel.common.constant.Role;
+import app.travel.model.tokens.TokenEntity;
+import app.travel.shared.service.tokens.ITokenService;
 import app.travel.value.JwtValue;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -13,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -22,11 +25,13 @@ import java.util.*;
 
 @Slf4j(topic = "JWT-SERVICE")
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor_ = {@Lazy})
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class JwtService implements IJwtService{
 
     JwtValue jwtValue;
+
+    ITokenService tokenService;
 
     @NonFinal
     SecretKey secretKey;
@@ -73,6 +78,11 @@ public class JwtService implements IJwtService{
             throw new ErrorHolderException(Error.INVALID_TOKEN);
         } catch (ExpiredJwtException e) {
             log.error(e.getMessage());
+
+            TokenEntity tokenEntity = tokenService.getTokenByToken(token, Boolean.FALSE);
+
+            if(tokenEntity != null) tokenService.deleteToken(tokenEntity);
+
             throw new ErrorHolderException(Error.TOKEN_EXPIRED);
         } catch (UnsupportedJwtException e) {
             log.error(e.getMessage());

@@ -73,4 +73,15 @@ public class TokenService implements ITokenService{
 
         tokenRepository.delete(token);
     }
+
+    @Override
+    public TokenEntity getTokenByToken(String token, Boolean throwable) {
+
+        TokenEntity tokenEntity = tokenMapper.findByToken(token).orElse(null);
+
+        if(tokenEntity == null && throwable)
+            throw new ErrorHolderException(Error.RESOURCE_NOT_FOUND);
+
+        return tokenEntity;
+    }
 }
