@@ -17,7 +17,6 @@ app:
         aes-gcm: 0bcc3ac262ae691c6456a7348b6e8319
 
   mail:
-    from: nam2023.11.07@gmail.com
     templates:
       signup-confirm: mail-signup-confirm-template.html
     subjects:

@@ -33,8 +33,8 @@ import java.util.List;
 @Slf4j
 public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessDeniedHandler {
 
-    private void logError(Error error){
-        log.error("{} - error code {}", error.getMessage(), error.getStatus().value());
+    private void logError(Error error, Exception ex){
+        log.error("{} - error code {}", ex.getMessage(), error.getStatus().value());
     }
 
     public void writeBodyExceptionResponse(HttpServletRequest request, HttpServletResponse response, Error error) throws IOException {
@@ -47,9 +47,9 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
                         ResultApiResponse.ErrorResponse.builder()
                                 .success(Boolean.FALSE)
                                 .message(error.getMessage())
-                                .status(error.getStatus())
+                                .status(error.getStatus().getReasonPhrase())
                                 .code(error.getStatus().value())
-                                .path(request.getRequestURI())
+                                .path(String.format("%s%s", request.getContextPath(), request.getServletPath()))
                                 .build()
                 )
         );
@@ -60,6 +60,8 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
 
         Error error = Error.UNAUTHENTICATED;
 
+        logError(error, authException);
+
         writeBodyExceptionResponse(request, response, error);
     }
 
@@ -67,6 +69,8 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
 
         Error error = Error.FORBIDDEN;
+
+        logError(error, accessDeniedException);
 
         writeBodyExceptionResponse(request, response, error);
     }
@@ -78,7 +82,7 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
 
         Error error = Error.SERVER_ERROR;
 
-        log.error("Server error {}", ex.getMessage());
+        logError(error, ex);
 
         return ResultApiResponse.ErrorResponse.build(error);
     }
@@ -99,7 +103,7 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
 
         return ResultApiResponse.ErrorResponse.builder()
                 .message("Invalid Fields.")
-                .status(HttpStatus.BAD_REQUEST)
+                .status(HttpStatus.BAD_REQUEST.getReasonPhrase())
                 .code(HttpStatus.BAD_REQUEST.value())
                 .error(fieldErrors)
                 .build();
@@ -111,17 +115,17 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
 
         Error error = err.getError();
 
-        logError(error);
+        logError(error, err);
 
         return ResultApiResponse.ErrorResponse.build(error);
     }
 
     @ExceptionHandler({DisabledException.class})
-    public ResultApiResponse.ErrorResponse handleDisabledException(AuthenticationException ignored){
+    public ResultApiResponse.ErrorResponse handleDisabledException(AuthenticationException ex){
 
         Error error = Error.ACCOUNT_DISABLED;
 
-        logError(error);
+        logError(error, ex);
 
         return ResultApiResponse.ErrorResponse.build(error);
     }
@@ -130,11 +134,11 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
             UsernameNotFoundException.class,
             BadCredentialsException.class
     })
-    public ResultApiResponse.ErrorResponse handleBadCredentialsException(AuthenticationException ignored){
+    public ResultApiResponse.ErrorResponse handleBadCredentialsException(AuthenticationException ex){
 
         Error error = Error.BAD_CREDENTIALS;
 
-        logError(error);
+        logError(error, ex);
 
         return ResultApiResponse.ErrorResponse.build(error);
     }
@@ -143,11 +147,11 @@ public class GlobalExceptionHandler implements AuthenticationEntryPoint, AccessD
             ClientAbortException.class,
             HttpClientErrorException.class
     })
-    public ResultApiResponse.ErrorResponse handlerClientError(Exception ignored){
+    public ResultApiResponse.ErrorResponse handlerClientError(Exception ex){
 
         Error error = Error.CLIENT_ERROR;
 
-        logError(error);
+        logError(error, ex);
 
         return ResultApiResponse.ErrorResponse.build(error);
     }

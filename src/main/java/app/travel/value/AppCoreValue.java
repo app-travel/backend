@@ -30,7 +30,7 @@ public class AppCoreValue {
     @Value("${app.server.secret-key.crypto.aes-gcm}")
     String serverSecretKey;
 
-    @Value("${app.mail.from}")
+    @Value("${spring.mail.username}")
     String sendEmailFrom;
 
 }

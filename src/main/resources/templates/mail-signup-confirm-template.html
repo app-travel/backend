@@ -2,40 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mail signup confirm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail signup confirm</title>
     <style>
         *{
             font-family: sans-serif;
             word-spacing: .3px;
             letter-spacing: .1px;
             box-sizing: border-box;
+            padding: 0;
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <table style="padding: 24px; background-color: cornsilk; max-width: 550px; min-width: 100%">
+    <table style="padding: 24px; background-color: lemonchiffon; max-width: 800px; width: 100%; margin: auto">
         <tbody>
             <tr>
-                <td style="margin-bottom: 24px">
-                    <img style="width: 16px; height: 16px; border-radius: 4px" src="https://static-00.iconduck.com/assets.00/fireworks-emoji-2048x2048-myr8wsym.png" />
-                    <strong style="font-size: 24px; color: #333;">Welcome to travel app run4ever</strong>
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 16px;">
-                    <p style="margin-bottom: 12px">Let's confirm for register to join with us.</p>
-                    <p>
-                        <img style="width: 16px; height: 16px; border-radius: 4px" src="https://w7.pngwing.com/pngs/558/907/png-transparent-snake-vs-bricks-emoji-version-handshake-emojipedia-hand-emoji-hand-apple-color-emoji-emoticon.png">
-                        <a style="font-size: 14px !important;" th:href="${linkFeSignUpConfirm}">
+                <td>
+                    <strong style="display: block; margin-bottom: 24px; font-size: 24px; color: #333;">Welcome to travel app run4ever</strong>
+                    <p style="margin-bottom: 12px; font-size: 16px;">Let's confirm for register to join with us.</p>
+                    <p style="margin-bottom: 24px;">
+                        <a style="font-size: 12px" th:href="${linkFeSignUpConfirm}">
                             [[${linkFeSignUpConfirm}]]
                         </a>
                     </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="margin-top: auto; color: #555; font-size: 12px; font-weight: lighter; font-style: italic   ">
-                    [[${year}]] &#169; Building by Nam & Bach (We're not dev) &#174; #dev4skill- #dev4us - #2devcuibep
+                    <p style="color: #555; font-size: 12px; font-weight: lighter; font-style: italic">
+                        [[${year}]] &#169; Building by Nam & Bach (We're not dev) &#174; #dev4skill - #dev4us - #2devcuibep
+                    </p>
                 </td>
             </tr>
         </tbody>

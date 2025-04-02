@@ -56,7 +56,7 @@ public class MiddlewareFilterConfig extends OncePerRequestFilter {
 
             String startWith = "Bearer";
 
-            if(bearerToken != null && bearerToken.contains(startWith)){
+            if(bearerToken != null && bearerToken.startsWith(startWith)){
 
                 String token = bearerToken.substring(startWith.length()).trim();
 
@@ -88,11 +88,11 @@ public class MiddlewareFilterConfig extends OncePerRequestFilter {
 
             if(err instanceof ErrorHolderException errHolder)
                 error = errHolder.getError();
-            else if(err instanceof AuthenticationException errAuth)
+            else if(err instanceof AuthenticationException)
                 error = Error.UNAUTHENTICATED;
             else error = Error.SERVER_ERROR;
 
-            log.error("Middleware filter error {}", error.getMessage());
+            log.error("Middleware filter error {}", err.getMessage());
 
             globalExceptionHandler.writeBodyExceptionResponse(request, response, error);
         }

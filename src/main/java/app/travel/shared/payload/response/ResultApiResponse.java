@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
-import org.springframework.http.HttpStatus;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 
@@ -21,7 +20,7 @@ public class ResultApiResponse {
 
     String message;
 
-    HttpStatus status;
+    String status;
 
     Integer code;
 
@@ -51,7 +50,7 @@ public class ResultApiResponse {
             return ErrorResponse.builder()
                     .success(Boolean.FALSE)
                     .message(err.getMessage())
-                    .status(err.getStatus())
+                    .status(err.getStatus().getReasonPhrase())
                     .code(err.getStatus().value())
                     .build();
         }

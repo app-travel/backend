@@ -1,6 +1,7 @@
 package app.travel.config.security;
 
 import app.travel.config.middleware.filter.MiddlewareFilterConfig;
+import app.travel.config.middleware.interceptor.MiddlewareInterceptorConfig;
 import app.travel.value.AppCoreValue;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

@@ -13,6 +13,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    open-in-view: true
 
   flyway:
     user: postgres
@@ -24,7 +25,7 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: nam2023.11.07
+    username: nam2023.11.07@gmail.com
     password: dneaswjmlqxjlohf
     protocol: smtp
     properties:
