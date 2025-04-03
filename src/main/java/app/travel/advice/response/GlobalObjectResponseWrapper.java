@@ -58,6 +58,7 @@ public class GlobalObjectResponseWrapper implements ResponseBodyAdvice<Object> {
             response.setStatusCode(HttpStatus.valueOf(errorResponse.getCode()));
 
             errorResponse.setSuccess(Boolean.FALSE);
+            errorResponse.setPath(request.getURI().getPath());
 
             return errorResponse;
         }

@@ -39,8 +39,6 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        String prefixPath = String.format("%s/**", appCoreValue.getPrefixPath());
-
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)

@@ -8,3 +8,18 @@ app:
   domain:
     backend: http://localhost:8080
     frontend: http://localhost:3000
+  openapi:
+    server:
+      url: ${app.domain.backend}${server.servlet.context-path}
+      description: Server URL in development environment
+    contact:
+      email: nguyen.hnam2024@gmail.com
+      name: Huu Nam Nguyen
+      url: https://www.linkedin.com/in/huunamng/
+    license:
+      name: Facebook
+      url: https://www.facebook.com/huunam66
+    info:
+      title: Travel app Api
+      version: 1.0
+      description: This page show api to apply in the system
