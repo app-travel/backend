@@ -55,7 +55,7 @@ springdoc:
 server:
   port: 8080
   servlet:
-    context-path: /travel-app/api/v1.0
+    context-path: /travel-app/api/v${app.openapi.info.version}
 
 logging:
   level:
